@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicio Práctico 7.2</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="data">
+            <table>
+                <caption>Precipitaciones anuales</caption>
+                <thead>
+                    <tr>
+                        <th>Ciudad</th>
+                        <th>2008</th>
+                        <th>2009</th>
+                        <th>2010</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sevilla</td>
+                        <td>50</td>
+                        <td>100</td>
+                        <td>75</td>
+                    </tr>
+                    <tr>
+                        <td>Bilbao</td>
+                        <td>250</td>
+                        <td>300</td>
+                        <td>180</td>
+                    </tr>
+                    <tr>
+                        <td>Coruña</td>
+                        <td>400</td>
+                        <td>200</td>
+                        <td>325</td>
+                    </tr>
+                    <tr>
+                        <td>Zaragoza</td>
+                        <td>100</td>
+                        <td>150</td>
+                        <td>60</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><button id="representar">Representar</button></p>
+        </div>
+        <div class="graphics">
+            <div>
+                <div class="year-2008"></div>
+                <div class="year-2009"></div>
+                <div class="year-2010"></div>
+                <div class="names">Sevilla</div>
+            </div>
+            <div>
+                <div class="year-2008"></div>
+                <div class="year-2009"></div>
+                <div class="year-2010"></div>
+                <div class="names">Bilbao</div>
+            </div>
+            <div>
+                <div class="year-2008"></div>
+                <div class="year-2009"></div>
+                <div class="year-2010"></div>
+                <div class="names">Coruña</div>
+            </div>
+            <div>
+                <div class="year-2008"></div>
+                <div class="year-2009"></div>
+                <div class="year-2010"></div>
+                <div class="names">Zaragoza</div>
+            </div>
+        </div>
+    </div>
+   <!-- <script src="js/script.js"></script> -->
+    <script>
+        // Escuchar clic del boton
+        document.getElementById("representar").addEventListener("click", event =>{
+            
+            // Obtener todas las filas de la tabla
+            let filas = document.querySelectorAll("tbody tr");
+
+            // Recorrer las filas para trabajar con cada ciudad
+            for (let index = 0; index < filas.length; index++) {
+                let celdas = filas[index].children;
+
+            // Acceder a las barras
+            let graficas = document.querySelector(".graphics > div:nth-child(" + (index + 1) +")");
+
+            // Recorrer los valores de los años
+            for (let j = 1; j < celdas.length; j++) {
+                let altura = parseInt(celdas[j].textContent);
+
+                graficas.children[j - 1].style.height = altura + "px";
+                graficas.children[j - 1].title = "Cantidad = " + altura;
+            }
+            }
+            
+        })
+    </script>
+</body>
+
+</html>
